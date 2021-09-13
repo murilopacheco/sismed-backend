@@ -7,7 +7,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(path = "/api/paciente")
+@RequestMapping(path = "paciente")
 public class PacienteController {
 
     @Autowired
