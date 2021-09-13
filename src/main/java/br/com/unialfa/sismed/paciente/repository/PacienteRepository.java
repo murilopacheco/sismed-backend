@@ -15,7 +15,7 @@ public interface PacienteRepository extends CrudRepository<Paciente, Long> {
     void deleteById(Long id);
 
     @Override
-    @RestResource(exported = false)
+    @RestResource
     Paciente save(Paciente paciente);
 
 }
