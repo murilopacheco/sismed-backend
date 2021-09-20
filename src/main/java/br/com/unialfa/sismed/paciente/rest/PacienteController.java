@@ -25,25 +25,30 @@ public class PacienteController {
         return ResponseEntity.ok(pacientes);
     }
 
-//    @PostMapping(path = "/add")
-//    public @ResponseBody ResponseEntity<?> savePaciente(@RequestBody Paciente paciente){
-//        return ResponseEntity.ok(pacienteRepository.save(paciente));
-//    }
-//
-//    @PutMapping(path = "/edit")
-//    public @ResponseBody ResponseEntity<?> updatePaciente(@RequestBody Paciente paciente){
-//        return ResponseEntity.ok(pacienteRepository.save(paciente));
-//    }
-//
-//    @DeleteMapping(path = "/delete/{id}")
-//    public @ResponseBody ResponseEntity<?> deletePaciente(@PathVariable(name = "id") Long id){
-//       try {
-//           pacienteRepository.deleteById(id);
-//           return ResponseEntity.ok(true);
-//       }catch (Exception e){
-//           return (ResponseEntity<?>) ResponseEntity.status(500);
-//       }
-//
-//    }
+    @PostMapping(path = "/add")
+    public @ResponseBody ResponseEntity<?> savePaciente(@RequestBody Paciente paciente){
+           paciente = service.save(paciente);
+           if(paciente != null) {
+               return ResponseEntity.ok(paciente);
+           }else{
+               return (ResponseEntity<?>) ResponseEntity.status(500);
+           }
+
+    }
+
+    @PutMapping(path = "/edit")
+    public @ResponseBody ResponseEntity<?> update(@RequestBody Paciente paciente){
+        paciente = service.save(paciente);
+        if(paciente != null) {
+            return ResponseEntity.ok(paciente);
+        }else{
+            return (ResponseEntity<?>) ResponseEntity.status(500);
+        }
+    }
+
+    @DeleteMapping(path = "/delete/{id}")
+    public @ResponseBody ResponseEntity<?> delete(@PathVariable(name = "id") Long id){
+       return service.delete(id);
+    }
 
 }
